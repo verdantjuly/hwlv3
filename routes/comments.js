@@ -49,7 +49,7 @@ router.post("/comments/:postid", authMiddleware,async (req, res) => {
 
 
 // 댓글 수정하기
-router.put("/comments/:commentid", authMiddleware,async (req, res) => {
+router.patch("/comments/:commentid", authMiddleware,async (req, res) => {
     var { commentid } = req.params
     var { content } = req.body
     const { nickname } = res.locals
