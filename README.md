@@ -2,7 +2,7 @@
 
 ## 계정  
 POST /signup 회원 가입  
-POST /signin 로그인  
+POST /login 로그인  
 
 ## 게시글 CRUD  
 GET /posts 게시글 전체 조회  
