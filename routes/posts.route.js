@@ -7,6 +7,8 @@ router.use(cookieParser())
 const { Op } = require("sequelize");
 
 
+
+
 // 게시글 전체 불러오기
 router.get("/posts", async (req, res) => {
     const allPosts = await Posts.findAll({ order: [["createdAt", "desc"]] },
