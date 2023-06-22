@@ -1,17 +1,12 @@
-const express = require('express');
-const connect = require('./schemas');
-const userRouter = require('./routes/users');
-const postRouter = require('./routes/posts');
-const commentRouter = require('./routes/comments');
-
+const express = require("express");
+const postsRouter = require("./routes/posts.route");
+const usersRouter = require("./routes/users.route");
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-connect();
+app.use(express.json());
+app.use('/api', [postsRouter,usersRouter]);
 
-app.use(express.json())
-app.use("/api", [userRouter,postRouter,commentRouter])
-
-app.listen(port, () => {
-    console.log(port, "포트로 서버가 열렸습니다!")
+app.listen(PORT, () => {
+  console.log(PORT, '포트 번호로 서버가 실행되었습니다.');
 })
