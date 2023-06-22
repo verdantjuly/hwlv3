@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser')
 router.use(cookieParser())
 
 // 정규식
-const idcheck = /\W/;
+const idcheck = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{3,}$/;
 
 // 회원 가입
 router.post('/signup', async (req, res) => {
@@ -17,7 +17,7 @@ router.post('/signup', async (req, res) => {
 
     if (target) {
         return res.status(400).json({ message: "중복된 닉네임이 존재합니다." });
-    } else if (idcheck.test(nickname) || nickname.length < 3) {
+    } else if (!idcheck.test(nickname)) {
         return res.status(400).json({ message: "닉네임은 최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)로 구성해 주세요." });
 
     } else if (password.length < 4 || password.includes(nickname)) {
