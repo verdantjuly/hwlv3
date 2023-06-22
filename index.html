@@ -24,6 +24,22 @@
         </div>
         <button type="submit" class="btn btn-outline-secondary">가입</button>
     </form>
+    <h1>로그인</h1>
+    <form action="/api/login" method="POST">
+        <div class="form-group">
+            <label>닉네임</label>
+            <input type="text" class="form-control" name="nickname" />
+        </div>
+        <div class="form-group">
+            <label>비밀번호</label>
+            <input type="text" class="form-control" name="password" />
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">로그인</button>
+    </form>
+    <h1>게시판</h1>
+    <form action="/api/posts" method="GET">
+        <button type="submit" class="btn btn-outline-secondary">게시판 바로가기</button>
+    </form>
 </body>
 
 </html>

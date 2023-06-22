@@ -11,14 +11,13 @@ const { Op } = require("sequelize");
 
 // 게시글 전체 불러오기
 router.get("/posts", async (req, res) => {
-    const allPosts = await Posts.findAll({ order: [["createdAt", "desc"]] },
-        { attributes: ["id", "title", "content", "createdAt", "updatedAt"] })
+    const allPosts = await Posts.findAll({ order: [["createdAt", "desc"]] , attributes: ["id", "title","content","nickname", "createdAt", "updatedAt"], })
     if (!allPosts.length) {
         return res.status(200).json({
             "message": "작성된 게시글이 없습니다. 첫 작성자가 되어 주세요!"
         })
     } else {
-        return res.status(200).json({ allPosts })
+        return res.status(200).send(allPosts)
 
     }
 
@@ -27,7 +26,7 @@ router.get("/posts", async (req, res) => {
 // 게시글 1개 불러오기
 router.get("/posts/:id", async (req, res) => {
     const { id } = req.params
-    const selectPost = await Posts.findOne({ attributes: ["id", "title", "content", "createdAt", "updatedAt"], where: { id } })
+    const selectPost = await Posts.findOne({  attributes: ["postId", "title", "createdAt", "updatedAt"]  , where: { id } })
     if (!selectPost) {
         res.status(400).json({ message: '데이터 형식이 올바르지 않습니다.' });
     }
