@@ -15,3 +15,11 @@ app.listen(PORT, () => {
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
+
+const { sequelize } = require("./models/index.js");
+
+async function main() {
+  await sequelize.sync();
+}
+
+main();
