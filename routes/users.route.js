@@ -1,3 +1,4 @@
+
 const express = require("express")
 const router = express.Router()
 const { Users } = require("../models");
@@ -20,20 +21,22 @@ router.post('/signup', async (req, res) => {
     const target = await Users.findOne({ where: { nickname } })
 
     if (target) {
-        return res.status(400).json({ message: "중복된 닉네임이 존재합니다." });
+        return res.writeHead(400, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('중복된 닉네임이 존재합니다.')</script>" ).end()
     } else if (!idcheck.test(nickname)) {
-        return res.status(400).json({ message: "닉네임은 최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)로 구성해 주세요." });
+        return res.writeHead(400, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('닉네임은 최소 3자 이상, 알파벳 대소문자(a~z, A~Z), 숫자(0~9)로 구성해 주세요')</script>" ).end()
 
     } else if (password.length < 4 || password.includes(nickname)) {
-        return res.status(400).json({ message: "비밀번호는 최소 4자 이상, 닉네임과 같은 값이 포함될 수 없습니다." });
+        return res.writeHead(400, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('비밀번호는 최소 4자 이상, 닉네임과 같은 값이 포함될 수 없습니다.')</script>" ).end()
+
 
     } else if (password !== confirm) {
-        return res.status(400).json({ message: "비밀번호와 비밀번호 확인이 일치하지 않습니다." });
+        return res.writeHead(400, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')</script>" ).end()
+
+
 
     } else if (password === confirm) {
         await Users.create({ nickname, password })
-        return res.status(201)
-            .json({ message: "계정이 생성되었습니다. " })
+        return res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('계정이 생성되었습니다.')</script>" ).end()
     }
 })
 
@@ -42,7 +45,7 @@ router.post('/login', async (req, res) => {
     const { nickname, password } = req.body
     const target = await Users.findOne({ nickname })
     if (!target || target.password !== password) {
-        return res.status(400).json({ message: "닉네임 또는 패스워드를 확인해주세요." })
+        return res.writeHead(400, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('닉네임 또는 패스워드를 확인해 주세요.')</script>" ).end()
     } else if (target.password == password) {
         const token = JWT.sign({ nickname, password }, "dayoung", { expiresIn: 3600 })
         let expires = new Date();
@@ -50,7 +53,8 @@ router.post('/login', async (req, res) => {
         res.cookie("authorization", `Bearer ${token}`, {
             expires: expires
         });
-        return res.status(200).json({ message: "로그인에 성공하였습니다."}).end()
+        return res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('로그인이 성공하였습니다.')</script>" ).end()
+
     }
 })
 
