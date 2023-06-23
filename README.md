@@ -6,10 +6,10 @@ POST /login 로그인
 
 ## 게시글 CRUD  
 GET /posts 게시글 전체 조회  
-GET /posts/:id 게시글 상세 조회  
+GET /posts?id=:id 게시글 상세 조회  
 POST /posts 게시글 작성  
-POST /posts/:id 게시글 수정  
-POST /posts/:id 게시글 삭제  
+POST /editpost 게시글 수정  
+POST /deletepost 게시글 삭제  
 
 ## 안내  
 프론트엔드와의 연결을 연습하는 것이 좋을 것 같아  
