@@ -55,11 +55,10 @@ router.post("/posts", authMiddleware, async (req, res) => {
 })
 
 // 게시글 수정하기
-router.patch("/posts/:id", authMiddleware, async (req, res) => {
-    var { id } = req.params
+router.post("/editpost", authMiddleware, async (req, res) => {
     const { nickname } = res.locals
     const { password } = res.locals
-    var { title, content } = req.body
+    const { title, content,id } = req.body
     const existPost = await Posts.findOne({ where: { id } })
 
     if (!existPost || password !== existPost.password) {
@@ -77,8 +76,8 @@ router.patch("/posts/:id", authMiddleware, async (req, res) => {
 })
 
 // 게시글 삭제하기
-router.delete("/posts/:id", authMiddleware, async (req, res) => {
-    var { id } = req.params
+router.post("/deletepost", authMiddleware, async (req, res) => {
+    var { id } = req.body
     const { password } = res.locals
     const existPost = await Posts.findOne({ where: { id } })
 
