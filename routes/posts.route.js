@@ -24,9 +24,9 @@ router.get("/posts", async (req, res) => {
 })
 
 // 게시글 1개 불러오기
-router.get("/posts/:id", async (req, res) => {
-    const { id } = req.body
-    const selectPost = await Posts.findOne({  attributes: ["postId", "title", "createdAt", "updatedAt"]  , where: { id } })
+router.get("/selectpost", async (req, res) => {
+    const { id } = req.query
+    const selectPost = await Posts.findOne({  attributes: ["id", "title", "nickname", "title", "content", "createdAt", "updatedAt"]  , where: { id } })
     if (!selectPost) {
         res.status(400).json({ message: '데이터 형식이 올바르지 않습니다.' });
     }

@@ -13,6 +13,16 @@
         <button type="submit" class="btn btn-outline-secondary">전체 조회</button>
     </form>
 <br/><br/><br/>
+
+<form action="/api/selectpost" method="GET">
+    <h3>게시글 상세 조회하기</h3>
+    <div class="form-group">
+        <label>postid</label>
+        <input type="text" class="form-control" name="id" />
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">상세 조회</button>
+</form>
+<br/><br/><br/>
     <form action="/api/posts" method="POST">
         <h3>게시글 작성하기</h3>
         <div class="form-group">
