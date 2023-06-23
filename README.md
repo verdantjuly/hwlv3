@@ -8,10 +8,12 @@ POST /login 로그인
 GET /posts 게시글 전체 조회  
 GET /posts/:id 게시글 상세 조회  
 POST /posts 게시글 작성  
-PATCH /posts/:id 게시글 수정  
-DELETE /posts/:id 게시글 삭제  
+POST /posts/:id 게시글 수정  
+POST /posts/:id 게시글 삭제  
 
 ## 안내  
-프론트엔드 index.html을 생성하였으나   
-회원가입/로그인/게시글전체조회 만 작동합니다!  
-조금 더 공부해서 CRUD도 연결해 보겠습니다!  
+프론트엔드와의 연결을 연습하는 것이 좋을 것 같아 
+html을 2개 작성하여 연결하였습니다.
+form 태그로 데이터를 주고 받는 법을 익혔는데 
+form 태그의 경우 method를 GET과 POST만 사용할 수 있다고 하여
+기존의 PATCH와 DELETE 메서드를 POST로 변경하였습니다.
