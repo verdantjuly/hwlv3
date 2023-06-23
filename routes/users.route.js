@@ -53,7 +53,8 @@ router.post('/login', async (req, res) => {
         res.cookie("authorization", `Bearer ${token}`, {
             expires: expires
         });
-        return res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('로그인이 성공하였습니다.')</script>" ).end()
+        res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'}).write( "<script>alert('로그인이 성공하였습니다.')</script>" )
+        return res.write("<script>window.location='../posts'</script>");
 
     }
 })

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>다영이의 블로그</h1>
+    <form action="/api/posts" method="GET">
+        <h3>게시글 전체 조회하기</h3>
+        <div class="form-group">
+        <button type="submit" class="btn btn-outline-secondary">전체 조회</button>
+    </form>
+<br/><br/><br/>
+    <form action="/api/posts" method="POST">
+        <h3>게시글 작성하기</h3>
+        <div class="form-group">
+            <label>제목</label>
+            <input type="text" class="form-control" name="title" />
+        </div>
+        <div class="form-group">
+            <label>내용</label>
+            <input type="text" class="form-control" name="content" />
+        </div>
+        <button type="submit" class="btn btn-outline-secondary">작성</button>
+    </form>
+
+</body>
+</html>
