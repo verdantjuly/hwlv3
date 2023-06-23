@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser')
 router.use(cookieParser())
 
 // 정규식
-const idcheck = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{3,}$/;
+const idcheck = /^(?=.*[\da-zA-Z])[0-9a-zA-Z]{3,}$/;
 
 // 회원 가입
 router.post('/signup', async (req, res) => {
