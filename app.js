@@ -6,24 +6,8 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-app.use('/api', [usersRouter, postsRouter]);
+app.use('/api', [postsRouter,usersRouter]);
 
 app.listen(PORT, () => {
   console.log(PORT, '포트 번호로 서버가 실행되었습니다.');
 })
-
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
-
-app.get("/posts", (req, res) => {
-  res.sendFile(__dirname + "/posts.html");
-});
-
-const { sequelize } = require("./models/index.js");
-
-async function main() {
-  await sequelize.sync();
-}
-
-main();
