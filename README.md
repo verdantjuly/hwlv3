@@ -1,4 +1,5 @@
 # hw1v3
+![ERD](https://github.com/verdantjuly/hwlv3/assets/131671804/57222168-951b-4646-b52e-4833411190a4)
 
 ### sequelize를 이용한 mySQL CRUD 게시판 만들기  
 내일 배움 캠프 노드 숙련 주차 과제 Lv.3   
